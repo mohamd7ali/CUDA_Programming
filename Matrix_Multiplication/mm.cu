@@ -1,9 +1,6 @@
-//ONLY MODIFY THIS FILE
-
 /*
-	Mohammad Ali Etemadi Naeen - 402200348
-	HW1 - Matrix Multiplication 
-	Sharif University of Technology
+	Mohammad Ali Etemadi Naeen
+	GPU Matrix Multiplication using CUDA Programming
 */
 
 #include "mm.h"
@@ -16,13 +13,9 @@
 #define by blockIdx.y
 #define bz blockIdx.z
 
-// you may change the following values
+// hyperparameters
 #define TILEX 512
 #define TILEY 2
-
-// you may define other parameters here!
-// you may define other macros here!
-// you may define other functions here!
 
 dim3 getDimGrid(const int m, const int n) {
 	dim3 dimGrid(n/TILEX,n/TILEY);
@@ -35,8 +28,8 @@ dim3 getDimBlock(const int m, const int n) {
 
 //-----------------------------------------------------------------------------
 __global__ void kernelFunc(float* ad, float* bd, float* cd, const int m,const int n) {
-	// write your GPU kernel function here
-	// note that maximum # of threads per block is 1024
+	// GPU kernel function
+	// maximum # of threads per block is 1024
 
 	// int i = (bx * TILEX) + tx;
 	// int j = (by * TILEY) + ty;

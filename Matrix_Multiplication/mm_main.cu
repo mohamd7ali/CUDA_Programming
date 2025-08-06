@@ -1,5 +1,3 @@
-//Do NOT MODIFY THIS FILE
-
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
