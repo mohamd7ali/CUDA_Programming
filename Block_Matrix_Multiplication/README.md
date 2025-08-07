@@ -87,7 +87,6 @@ m=10 n=1024 GPU=123.45 ms GPU-Kernel=120.67 ms mse=0
 - Only modify `bmm.cu` for kernel development; other files should remain unchanged.
 - The project is designed for square matrices of size 2^m × 2^m.
 - For large matrices (m > 13), ensure your GPU has sufficient memory.
-- The code is intended for educational and benchmarking purposes.
 
 ## Author
 
