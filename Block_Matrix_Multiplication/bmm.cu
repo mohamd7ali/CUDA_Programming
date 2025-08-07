@@ -1,10 +1,6 @@
-//ONLY MODIFY THIS FILE!
-//YOU CAN MODIFY EVERYTHING IN THIS FILE!
-
 /*
-	Mohammad Ali Etemadi Naeen - 402200348
-	HW2 - Block Matrix Multiplication 
-	Sharif University of Technology
+	Mohammad Ali Etemadi Naeen 
+	GPU Block Matrix Multiplication using CUDA Programming Kernel
 */
 
 #include "bmm.h"
@@ -21,7 +17,6 @@
 #define TILEX 32
 #define TILEY 16
 
-// you may define other parameters here!
 #define TILE_S 128
 #define T_ROW TILE_S/TILEY
 #define T_COL TILE_S/TILEX
@@ -38,7 +33,7 @@ dim3 getDimBlock(const int m, const int n) {
 }
 
 __global__ void kernelFunc(float* ad, float* bd, float* cd, const int m, const int n) {
-	// write your GPU kernel function here
+	// GPU kernel function
 	// use shared_memory
 	__shared__ float As[TILEY][TILE_S];
     __shared__ float Bs[TILE_S][TILEX];
