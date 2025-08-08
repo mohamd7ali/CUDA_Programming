@@ -1,10 +1,6 @@
-//ONLY MODIFY THIS FILE!
-//YOU CAN MODIFY EVERYTHING IN THIS FILE!
-
 /*
-	Mohammad Ali Etemadi Naeen - 402200348
-	HW3 - Scan 
-	Sharif University of Technology
+	Mohammad Ali Etemadi Naeen
+	CUDA Scan - Galois Fields
 */
 
 #include "scan.h"

@@ -1,5 +1,3 @@
-//Do NOT MODIFY THIS FILE
-
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
@@ -98,6 +96,7 @@ int64_t calc_num_error(uint8_t* data1, uint8_t* data2, int size){
 	return num_error;
 }
 //-----------------------------------------------------------------------------
+// CPU kernel function to perform the matrix-vector multiplication
 void matrix_to_vector_multiply(uint8_t* a, uint8_t* v, uint8_t* res, int dim, FiniteField* finiteField)
 {
 	for (int i=0; i<dim; i++)
@@ -109,6 +108,9 @@ void matrix_to_vector_multiply(uint8_t* a, uint8_t* v, uint8_t* res, int dim, Fi
 		}
 	}
 }
+//-----------------------------------------------------------------------------
+// CPU kernel function to perform the matrix multiplication
+// It takes two matrices 'a' and 'b', and outputs the result matrix 'c
 void matrix_to_matrix_multiply(uint8_t* a, uint8_t* b, uint8_t* c, int dim, FiniteField* finiteField)
 {
 	for (int i=0; i<dim; i++)
@@ -123,8 +125,9 @@ void matrix_to_matrix_multiply(uint8_t* a, uint8_t* b, uint8_t* c, int dim, Fini
 		}
 	}
 }
-
-
+//-----------------------------------------------------------------------------
+// CPU kernel function to perform the scan operation
+// It takes the input vector 'a', the transformation matrix 'matrix', and outputs the result vector 'c'
 void cpuKernel(uint8_t* a, uint8_t* matrix, uint8_t* c, int m, int n, FiniteField* finiteField)
 {
 
