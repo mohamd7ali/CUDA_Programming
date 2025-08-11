@@ -7,7 +7,6 @@
 #include "gpuerrors.h"
 #include "convolution.h"
 
-
 // Define the tile dimensions
 const int tilex = 32;
 const int tiley = 32;
@@ -24,12 +23,10 @@ int main(int argc, char** argv) {
     cudaGetDeviceProperties(&p, 0);
     printf("Device Name: %s\n", p.name);	
 	
-	
     // Set the size of the signals (assumed to be square)
     int m = atoi(argv[1]);
 	int n = (1 << m);
 	const int result_size = n + n - 1;
-	
 	
     // Allocate memory for signals on host
     float *h_f = (float*)malloc(n*n * sizeof(float));
@@ -138,7 +135,8 @@ void convolution2DCPU(const float *f, const float *g, float *result, int n, bool
 	}
 }
 
-
+// GPU kernel function for 2D convolution
+// This function is defined in convolution.cu
 void gpuKernel(const float *f, const float *g, float *result, int n, int bx_size, int by_size, double* gpu_kernel_time) {
 
     // Allocate memory for signals on device

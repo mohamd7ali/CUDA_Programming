@@ -1,7 +1,5 @@
 /*
-	Mohammad Ali Etemadi Naeen - 402200348
-	HW4 - Convolution
-	Sharif University of Technology
+	Mohammad Ali Etemadi Naeen - 2D Convolution using CUDA
 */
 
 #include "convolution.h"
@@ -13,13 +11,8 @@
 #define by blockIdx.y
 #define bz blockIdx.z
 
-// you may define other parameters here!
-// you may define other macros here!
-// you may define other functions here!
-
 __global__ void kernelFunc(const float* f, const float* g, float* result, int n)
 {
-    // Insert your code here...
     // Calculate row and column index
     int row = blockIdx.y * blockDim.y + threadIdx.y;
     int col = blockIdx.x * blockDim.x + threadIdx.x;
