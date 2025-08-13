@@ -61,6 +61,11 @@ This project simulates heat dissipation in a two-dimensional room divided into c
    $$
    
    In a two-dimensional scenario, we consider neighbors located at the top, bottom, right, and left of each cell.
+
+    <div align="center">
+    <img src="Heat_dissipating_from_warm_cells_into_cold_cells.png" alt="Neighbor cells stencil" width="250"/>
+    </div>
+
 3. **CPU Reference Calculation:** The CPU computes the reference result for correctness checking.
 4. **GPU Computation:** The grid is copied to the device, bound to a CUDA 2D texture, and the kernel updates temperatures in parallel.
 5. **Result Validation:** The output is copied back to the host and compared with the CPU result using Mean Squared Error (MSE).
