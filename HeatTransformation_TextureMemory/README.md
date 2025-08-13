@@ -18,8 +18,9 @@
 
 ## Overview
 
-This project simulates 2D heat transformation using CUDA, leveraging texture memory for efficient access patterns. It demonstrates how parallel GPU computation and spatially cached memory can accelerate stencil-based scientific simulations. 
+This project simulates heat dissipation in a two-dimensional room divided into cells, with each cell having a temperature randomly ranging between 20 to 30 degrees Celsius. As each cell has a different temperature from its neighbors, heat transformation occurs between these cells and their neighbors in order to establish thermal balance. The simulation demonstrates how parallel GPU computation and spatially cached memory can accelerate stencil-based scientific simulations.
 
+- **Physical Scenario:** Each cell represents a location in a room, and the temperature evolves according to the heat exchange with its four direct neighbors (top, bottom, left, right).
 - **Stencil Computation:** Each cell's temperature is updated based on its four neighbors, modeling heat diffusion.
 - **Texture Memory:** Uses CUDA's 2D texture memory for fast, cached, read-only access to grid data.
 - **CPU vs GPU:** Includes both serial (CPU) and parallel (GPU) implementations for performance and correctness comparison.
@@ -116,8 +117,8 @@ m=12 n=4096 GPU=123.45 ms GPU-Kernel=98.76 ms mse=0.000123
 
 - The grid is a matrix of size $N \times N$, where $N = 2^m$, and each array cell represents a cell within the room.
 - The simulation applies the heat transformation formula for 10 iterations by default.
+- You can choose between 1D or 2D texture memory for calculations, depending on speed and suitability for your application.
 - For large grids (`m > 13`), ensure your GPU has sufficient memory.
-
 
 ## Author
 
