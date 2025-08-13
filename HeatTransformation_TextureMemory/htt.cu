@@ -1,7 +1,6 @@
 // /*
-// 	Mohammad Ali Etemadi Naeen - 402200348
-// 	HW5 - Heat Transformation with Texture Memory (htt)
-// 	Sharif University of Technology
+// 	Mohammad Ali Etemadi Naeen
+// 	Heat Transformation with Texture Memory (htt) using CUDA Programming
 // */
 
 #include "htt.h"
@@ -10,7 +9,6 @@
 #define bx blockIdx.x
 #define ty threadIdx.y
 #define by blockIdx.y
-
 
 // Define a texture memory
 texture<float, 2, cudaReadModeElementType> tex;

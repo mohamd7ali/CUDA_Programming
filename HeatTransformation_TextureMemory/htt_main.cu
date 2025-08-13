@@ -1,5 +1,3 @@
-//Do NOT MODIFY THIS FILE
-
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
@@ -83,6 +81,7 @@ void fill(float* data, int size) {
 	}
 }
 
+// Function to calculate the Mean Squared Error (MSE) between two float arrays of the same size
 double calc_mse (float* data1, float* data2, int size) {
 	double mse = 0.0;
 	int i; for (i=0; i<size; i++) {
