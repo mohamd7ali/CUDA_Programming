@@ -18,7 +18,7 @@
 
 ## Overview
 
-This project simulates 2D heat transformation using CUDA, leveraging texture memory for efficient access patterns. It demonstrates how parallel GPU computation and spatially cached memory can accelerate stencil-based scientific simulations. The code is designed for educational purposes in parallel programming and GPU computing.
+This project simulates 2D heat transformation using CUDA, leveraging texture memory for efficient access patterns. It demonstrates how parallel GPU computation and spatially cached memory can accelerate stencil-based scientific simulations. 
 
 - **Stencil Computation:** Each cell's temperature is updated based on its four neighbors, modeling heat diffusion.
 - **Texture Memory:** Uses CUDA's 2D texture memory for fast, cached, read-only access to grid data.
@@ -44,11 +44,26 @@ This project simulates 2D heat transformation using CUDA, leveraging texture mem
 
 ## How It Works
 
-1. **Grid Initialization:** The temperature grid is initialized with random values between 20.0 and 30.0.
-2. **CPU Reference Calculation:** The CPU computes the reference result for correctness checking.
-3. **GPU Computation:** The grid is copied to the device, bound to a CUDA 2D texture, and the kernel updates temperatures in parallel.
-4. **Result Validation:** The output is copied back to the host and compared with the CPU result using Mean Squared Error (MSE).
-5. **Performance Reporting:** The program prints the grid size, GPU execution time, kernel time, and MSE.
+1. **Grid Initialization:** The temperature grid is initialized with random values between 20.0 and 30.0 degrees Celsius.
+2. **Mathematical Formulation:**  
+   The new temperature of each cell depends on the temperatures of its neighboring cells (top, bottom, right, left), incorporating the constant `K` over a specific duration.  
+   The update equation for each cell is:
+   
+   $$
+   T_{new} = T_{old} + K \times \left[ (T_{top} - T_{old}) + (T_{bottom} - T_{old}) + (T_{right} - T_{old}) + (T_{left} - T_{old}) \right]
+   $$
+   
+   Or equivalently:
+   
+   $$
+   T_{new} = T_{old} + K \times \left( T_{top} + T_{bottom} + T_{right} + T_{left} - 4 \times T_{old} \right)
+   $$
+   
+   In a two-dimensional scenario, we consider neighbors located at the top, bottom, right, and left of each cell.
+3. **CPU Reference Calculation:** The CPU computes the reference result for correctness checking.
+4. **GPU Computation:** The grid is copied to the device, bound to a CUDA 2D texture, and the kernel updates temperatures in parallel.
+5. **Result Validation:** The output is copied back to the host and compared with the CPU result using Mean Squared Error (MSE).
+6. **Performance Reporting:** The program prints the grid size, GPU execution time, kernel time, and MSE.
 
 ## CUDA Texture Memory
 
@@ -99,8 +114,8 @@ m=12 n=4096 GPU=123.45 ms GPU-Kernel=98.76 ms mse=0.000123
 
 ## Notes
 
-- Only modify `htt.cu` for kernel development; other files should remain unchanged.
-- The project is designed for square grids of size 2^m × 2^m.
+- The grid is a matrix of size $N \times N$, where $N = 2^m$, and each array cell represents a cell within the room.
+- The simulation applies the heat transformation formula for 10 iterations by default.
 - For large grids (`m > 13`), ensure your GPU has sufficient memory.
 
 
